@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>POMODORO TIMER V2</title>
+  </head>
+  <body>
+    <div class="app">
+      <nav class="nav">
+        <div class="title-burger-container">
+          <span class="title">POMODORO</span>
+          <button class="hamburger-btn">
+            <div class="bar top"></div>
+            <div class="bar mid"></div>
+            <div class="bar bottom"></div>
+          </button>
+        </div>
+
+        <!-- FORM -->
+        <form class="form">
+          <h2>SETTINGS</h2>
+          <div class="form__input-container">
+            <div class="input-cell">
+              <label class="input-label" for="focus">Focus (min)</label>
+              <input
+                type="number"
+                min="15"
+                max="120"
+                class="focus-input"
+                name="focus"
+                placeholder="25"
+                required
+              />
+            </div>
+            <div class="input-cell">
+              <label class="input-label" for="break">Break (min)</label>
+              <input
+                type="number"
+                min="1"
+                max="15"
+                class="break-input"
+                name="break"
+                placeholder="5"
+                required
+              />
+            </div>
+            <div class="input-cell">
+              <label class="input-label" for="rest">Rest (min)</label>
+              <input
+                type="number"
+                min="10"
+                max="30"
+                class="rest-input"
+                name="rest"
+                placeholder="15"
+                required
+              />
+            </div>
+          </div>
+          <button class="save-btn" disabled>SAVE</button>
+        </form>
+      </nav>
+
+      <!-- TIMER -->
+      <div class="timer-container">
+        <span class="current-mode">MODE</span>
+        <div class="tomato-grid"></div>
+        <span class="timer">TIMER</span>
+        <div class="btn-container">
+          <button class="start-btn">START</button>
+          <button class="reset-btn">RESET</button>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

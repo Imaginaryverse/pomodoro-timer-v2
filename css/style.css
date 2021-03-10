@@ -1,0 +1,224 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 1px;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  position: relative;
+  height: 100%;
+  max-height: 736px;
+  width: 100%;
+  max-width: 414px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+.app .nav {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+.app .nav .title-burger-container {
+  height: 4rem;
+  width: 100%;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.app .nav .title-burger-container .title {
+  font-size: 1.25rem;
+  font-weight: bolder;
+}
+.app .nav .title-burger-container .hamburger-btn {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+.app .nav .title-burger-container .hamburger-btn.open {
+  transform: rotate(270deg);
+}
+.app .nav .title-burger-container .hamburger-btn .bar {
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  background-color: black;
+  transition: all 0.3s ease;
+}
+.app .nav .title-burger-container .hamburger-btn .bar.top {
+  top: 0.5rem;
+}
+.app .nav .title-burger-container .hamburger-btn .bar.top.open {
+  top: 18px;
+  transform: rotate(45deg);
+}
+.app .nav .title-burger-container .hamburger-btn .bar.mid.open {
+  background-color: transparent;
+}
+.app .nav .title-burger-container .hamburger-btn .bar.bottom {
+  bottom: 0.5rem;
+}
+.app .nav .title-burger-container .hamburger-btn .bar.bottom.open {
+  bottom: 18px;
+  transform: rotate(-45deg);
+}
+
+.save-btn,
+.start-btn,
+.reset-btn {
+  height: 2rem;
+  width: 6rem;
+}
+
+.form {
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+.form.open {
+  height: 35vh;
+}
+.form .form__input-container {
+  width: 100%;
+  padding: 0 1rem;
+}
+.form .form__input-container .input-cell {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  justify-items: self-start;
+  align-items: center;
+  padding: 0.5rem;
+}
+.form .form__input-container .input-cell .focus-input,
+.form .form__input-container .input-cell .break-input,
+.form .form__input-container .input-cell .rest-input {
+  width: 100%;
+  padding-left: 0.15rem;
+}
+
+.timer-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8rem 0;
+  transition: all 2.5s ease;
+}
+.timer-container.focus {
+  background-color: skyblue;
+}
+.timer-container.break {
+  background-color: khaki;
+}
+.timer-container.rest {
+  background-color: darkorange;
+}
+.timer-container.start {
+  background-color: floralwhite;
+}
+.timer-container .current-mode {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+.timer-container .tomato-grid {
+  height: 6rem;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+.timer-container .tomato-grid .tomato-img {
+  height: 3rem;
+  -webkit-animation: hovering 5s ease infinite;
+          animation: hovering 5s ease infinite;
+}
+.timer-container .timer {
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+}
+.timer-container .timer.paused {
+  -webkit-animation: blink 1.5s ease infinite;
+          animation: blink 1.5s ease infinite;
+}
+.timer-container .btn-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+@-webkit-keyframes hovering {
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes hovering {
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=style.css.map */
