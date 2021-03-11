@@ -131,6 +131,7 @@ body {
 }
 
 .timer-container {
+  position: relative;
   height: 100%;
   width: 100%;
   display: flex;
@@ -151,6 +152,20 @@ body {
 }
 .timer-container.start {
   background-color: floralwhite;
+}
+.timer-container .mute-btn {
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+.timer-container .mute-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .timer-container .current-mode {
   font-size: 1.5rem;

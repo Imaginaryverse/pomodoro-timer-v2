@@ -47,6 +47,7 @@ const BreakInput = document.querySelector('.break-input');
 const RestInput = document.querySelector('.rest-input');
 const saveBtn = document.querySelector('.save-btn');
 
+const muteBtn = document.querySelector('.mute-btn');
 const templeBell = document.querySelector('.temple-bell');
 
 const currentMode = document.querySelector('.current-mode');
@@ -136,6 +137,24 @@ const handleStart = () => {
       startTimer(timePause);
       break;
   }
+};
+
+const handleMuteBtn = () => {
+  switch (soundVol) {
+    case 0:
+      muteBtn.innerHTML = `<i class="fas fa-volume-up"></i>`;
+      soundVol = 1;
+      console.log('SOUND ON');
+      break;
+    case 1:
+      muteBtn.innerHTML = `<i class="fas fa-volume-mute"></i>`;
+      soundVol = 0;
+      console.log('SOUND OFF');
+
+      break;
+  }
+
+  templeBell.volume = soundVol;
 };
 
 const updateSaveBtn = (f, b, r) => {
@@ -297,8 +316,12 @@ resetBtn.addEventListener('click', () => {
   timer.classList.remove('paused');
 });
 
+muteBtn.addEventListener('click', handleMuteBtn);
+
 /* START */
 updateResetBtn(state);
 updateModeText('PRESS START');
 setBackground(state);
 timer.innerHTML = formatTime(toSeconds(DEF_FOCUS_VAL));
+muteBtn.innerHTML = `<i class="fas fa-volume-mute"></i>`;
+templeBell.volume = soundVol;
