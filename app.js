@@ -36,6 +36,7 @@ let timesFocused = 0;
 let soundVol = 0;
 
 /* DOM ELEMENTS */
+const nav = document.querySelector('.nav');
 const hamburgerBtn = document.querySelector('.hamburger-btn');
 const barTop = document.querySelector('.top');
 const barMid = document.querySelector('.mid');
@@ -57,6 +58,10 @@ const timer = document.querySelector('.timer');
 const startBtn = document.querySelector('.start-btn');
 const resetBtn = document.querySelector('.reset-btn');
 
+const footer = document.querySelector('.footer');
+const infoBtn = document.querySelector('.info-btn');
+const infoContainer = document.querySelector('.info-container');
+
 /* FUNCTIONS */
 const setSetting = (m) => {
   setting = m;
@@ -71,14 +76,9 @@ const createTomato = () => {
   if (tomatoGrid.childElementCount < timesFocused) {
     const img = document.createElement('img');
     img.className = 'tomato-img';
-    img.src =
-      'https://www.flaticon.com/svg/vstatic/svg/877/877712.svg?token=exp=1615399727~hmac=08c203b67f0c8f2f745723446517fdd3';
+    img.src = 'assets/images/tomato.svg';
     img.alt = 'tomato';
     tomatoGrid.appendChild(img);
-
-    /*
-    ADD BOUNCY ANIMATION WHEN TOMATO SPAWNS! :D
-    */
   } else {
     tomatoGrid.innerHTML = '';
   }
@@ -110,6 +110,21 @@ const handleHamburgerBtn = () => {
   barMid.classList.toggle('open');
   barBottom.classList.toggle('open');
   form.classList.toggle('open');
+
+  // CHECK IF INFO IS OPEN
+  infoBtn.classList.contains('open') ? handleInfoBtn() : null;
+};
+
+const handleInfoBtn = () => {
+  infoBtn.classList.toggle('open');
+  footer.classList.toggle('open');
+  infoContainer.classList.toggle('open');
+
+  if (infoBtn.classList.contains('open')) {
+    infoBtn.innerHTML = `<i class="fas fa-times-circle"></i>`;
+  } else {
+    infoBtn.innerHTML = `<i class="fas fa-info-circle"></i>`;
+  }
 };
 
 const handleStart = () => {
@@ -248,7 +263,6 @@ const startTimer = (t) => {
           );
           break;
         case 'REST':
-          console.log('FINITO');
           updateModeText('WELL DONE!');
           setState('START');
           updateStartBtn(state);
@@ -317,6 +331,14 @@ resetBtn.addEventListener('click', () => {
 });
 
 muteBtn.addEventListener('click', handleMuteBtn);
+
+infoBtn.addEventListener('click', handleInfoBtn);
+
+document.addEventListener('click', (e) => {
+  if (hamburgerBtn.classList.contains('open') && !nav.contains(e.target)) {
+    handleHamburgerBtn();
+  }
+});
 
 /* START */
 updateResetBtn(state);

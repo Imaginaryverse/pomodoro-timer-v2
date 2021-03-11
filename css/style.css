@@ -204,6 +204,73 @@ body {
   margin-top: 5rem;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  z-index: 100;
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+.footer.open {
+  background-color: white;
+  border-top: 1px solid black;
+  overflow: visible;
+  height: calc(100% - 4rem);
+}
+.footer .info-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.footer .info-btn-container .info-btn {
+  height: 2rem;
+  width: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  font-size: 1.5rem;
+  transition: all 0.5s ease;
+}
+.footer .info-btn-container .info-btn.open {
+  transform: rotate(360deg);
+}
+.footer .info-btn-container .info-btn:hover {
+  color: mediumpurple;
+}
+.footer .info-container {
+  height: 100%;
+  overflow: hidden;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  font-size: 2.15vh;
+}
+.footer .info-container .info-list {
+  margin: 0.5rem 0;
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  list-style: decimal;
+  background-color: #f0f0f0;
+}
+.footer .info-container .info-list li {
+  margin: 0.5rem;
+}
+
 @-webkit-keyframes hovering {
   50% {
     transform: translateY(-5px);
