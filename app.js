@@ -282,7 +282,7 @@ const startTimer = (t) => {
     }
 
     timer.innerHTML = formatTime(time);
-  }, 5);
+  }, 1000);
 };
 
 const resetAll = () => {
