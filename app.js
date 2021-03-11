@@ -337,6 +337,10 @@ infoBtn.addEventListener('click', handleInfoBtn);
 document.addEventListener('click', (e) => {
   if (hamburgerBtn.classList.contains('open') && !nav.contains(e.target)) {
     handleHamburgerBtn();
+
+    if ((e.target = infoBtn)) {
+      handleInfoBtn();
+    }
   }
 });
 
