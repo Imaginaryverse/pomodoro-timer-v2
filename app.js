@@ -36,6 +36,8 @@ let timesFocused = 0;
 let soundVol = 0;
 
 /* DOM ELEMENTS */
+const app = document.querySelector('.app');
+
 const nav = document.querySelector('.nav');
 const hamburgerBtn = document.querySelector('.hamburger-btn');
 const barTop = document.querySelector('.top');
@@ -337,8 +339,7 @@ infoBtn.addEventListener('click', handleInfoBtn);
 document.addEventListener('click', (e) => {
   if (hamburgerBtn.classList.contains('open') && !nav.contains(e.target)) {
     handleHamburgerBtn();
-
-    if ((e.target = infoBtn)) {
+    if (e.target.classList.contains('fas')) {
       handleInfoBtn();
     }
   }
