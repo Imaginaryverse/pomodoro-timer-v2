@@ -33,6 +33,7 @@ let mode = modes.START;
 let state = states.START;
 let timePause = 0;
 let timesFocused = 0;
+let soundVol = 0;
 
 /* DOM ELEMENTS */
 const hamburgerBtn = document.querySelector('.hamburger-btn');
@@ -45,6 +46,8 @@ const focusInput = document.querySelector('.focus-input');
 const BreakInput = document.querySelector('.break-input');
 const RestInput = document.querySelector('.rest-input');
 const saveBtn = document.querySelector('.save-btn');
+
+const templeBell = document.querySelector('.temple-bell');
 
 const currentMode = document.querySelector('.current-mode');
 const timerContainer = document.querySelector('.timer-container');
@@ -71,6 +74,10 @@ const createTomato = () => {
       'https://www.flaticon.com/svg/vstatic/svg/877/877712.svg?token=exp=1615399727~hmac=08c203b67f0c8f2f745723446517fdd3';
     img.alt = 'tomato';
     tomatoGrid.appendChild(img);
+
+    /*
+    ADD BOUNCY ANIMATION WHEN TOMATO SPAWNS! :D
+    */
   } else {
     tomatoGrid.innerHTML = '';
   }
@@ -197,6 +204,7 @@ const startTimer = (t) => {
     time--;
 
     if (!time) {
+      templeBell.play();
       clearInterval(interval);
 
       switch (mode) {
@@ -241,7 +249,7 @@ const startTimer = (t) => {
     }
 
     timer.innerHTML = formatTime(time);
-  }, 1000);
+  }, 5);
 };
 
 const resetAll = () => {
