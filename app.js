@@ -393,9 +393,9 @@ if (setting != 'USER') {
   breakInput.placeholder = DEF_BREAK_VAL;
   restInput.placeholder = DEF_REST_VAL;
 } else {
-  focusInput.placeholder = userSettings.focusTime;
-  breakInput.placeholder = userSettings.breakTime;
-  restInput.placeholder = userSettings.restTime;
+  focusInput.value = userSettings.focusTime;
+  breakInput.value = userSettings.breakTime;
+  restInput.value = userSettings.restTime;
 }
 updateDefaultBtn();
 muteBtn.innerHTML = `<i class="fas fa-volume-mute"></i>`;
