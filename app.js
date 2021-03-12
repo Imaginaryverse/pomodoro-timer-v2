@@ -46,9 +46,10 @@ const barBottom = document.querySelector('.bottom');
 
 const form = document.querySelector('.form');
 const focusInput = document.querySelector('.focus-input');
-const BreakInput = document.querySelector('.break-input');
-const RestInput = document.querySelector('.rest-input');
+const breakInput = document.querySelector('.break-input');
+const restInput = document.querySelector('.rest-input');
 const saveBtn = document.querySelector('.save-btn');
+const defaultBtn = document.querySelector('.default-btn');
 
 const muteBtn = document.querySelector('.mute-btn');
 const templeBell = document.querySelector('.temple-bell');
@@ -104,6 +105,29 @@ const setUserSettings = (f, b, r) => {
 
   console.log(userSettings);
   console.log({ setting });
+};
+
+const saveToLocalStorage = () => {
+  const settings_serialized = JSON.stringify(userSettings);
+
+  localStorage.setItem('userSettings', settings_serialized);
+};
+
+const getFromLocalStorage = () => {
+  if (localStorage.getItem('userSettings')) {
+    const settings_deserialized = JSON.parse(
+      localStorage.getItem('userSettings')
+    );
+    setUserSettings(
+      settings_deserialized.focusTime,
+      settings_deserialized.breakTime,
+      settings_deserialized.restTime
+    );
+  }
+};
+
+const clearLocalStorage = () => {
+  localStorage.clear();
 };
 
 const handleHamburgerBtn = () => {
@@ -177,6 +201,14 @@ const handleMuteBtn = () => {
 const updateSaveBtn = (f, b, r) => {
   if (f && b && r) {
     saveBtn.disabled = false;
+  }
+};
+
+const updateDefaultBtn = () => {
+  if (setting != 'USER') {
+    defaultBtn.disabled = true;
+  } else {
+    defaultBtn.disabled = false;
   }
 };
 
@@ -307,22 +339,26 @@ const resetAll = () => {
 hamburgerBtn.addEventListener('click', handleHamburgerBtn);
 
 form.addEventListener('change', () => {
-  updateSaveBtn(focusInput.value, BreakInput.value, RestInput.value);
+  updateSaveBtn(focusInput.value, breakInput.value, restInput.value);
 });
 
 saveBtn.addEventListener('click', (e) => {
   if (
     isValid(focusInput, 15, 120) &&
-    isValid(BreakInput, 1, 15) &&
-    isValid(RestInput, 10, 30)
+    isValid(breakInput, 1, 15) &&
+    isValid(restInput, 10, 30)
   ) {
     console.log('VALID');
     e.preventDefault();
-    setUserSettings(focusInput.value, BreakInput.value, RestInput.value);
+    setUserSettings(focusInput.value, breakInput.value, restInput.value);
+    saveToLocalStorage();
   } else {
     console.log('INVALID');
   }
+  updateDefaultBtn();
 });
+
+defaultBtn.addEventListener('click', clearLocalStorage);
 
 startBtn.addEventListener('click', handleStart);
 
@@ -349,6 +385,18 @@ document.addEventListener('click', (e) => {
 updateResetBtn(state);
 updateModeText('PRESS START');
 setBackground(state);
-timer.innerHTML = formatTime(toSeconds(DEF_FOCUS_VAL));
+getFromLocalStorage();
+if (setting != 'USER') {
+  timer.innerHTML = formatTime(toSeconds(DEF_FOCUS_VAL));
+
+  focusInput.placeholder = DEF_FOCUS_VAL;
+  breakInput.placeholder = DEF_BREAK_VAL;
+  restInput.placeholder = DEF_REST_VAL;
+} else {
+  focusInput.placeholder = userSettings.focusTime;
+  breakInput.placeholder = userSettings.breakTime;
+  restInput.placeholder = userSettings.restTime;
+}
+updateDefaultBtn();
 muteBtn.innerHTML = `<i class="fas fa-volume-mute"></i>`;
 templeBell.volume = soundVol;
