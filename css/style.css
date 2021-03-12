@@ -103,27 +103,33 @@ body {
 .form {
   height: 0;
   width: 100%;
+  padding: 0 1rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   transition: all 0.3s ease;
 }
 .form.open {
-  height: 40vh;
+  height: 50vh;
 }
 .form h2 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+}
+.form .min-max {
+  font-size: 0.7rem;
+  background-color: #f0f0f0;
+  padding: 0.5rem;
+  margin: 1rem 0;
 }
 .form .form__input-container {
-  height: 50%;
+  height: 45%;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  padding: 0 1rem;
 }
 .form .form__input-container .input-cell {
   width: 100%;
@@ -131,7 +137,6 @@ body {
   grid-template-columns: 1fr 2fr;
   justify-items: self-start;
   align-items: center;
-  padding: 0.25rem;
 }
 .form .form__input-container .input-cell label {
   font-size: 0.8rem;
@@ -142,6 +147,12 @@ body {
   width: 100%;
   font-size: 0.8rem;
   padding-left: 0.15rem;
+}
+.form .form-btn-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .timer-container {
