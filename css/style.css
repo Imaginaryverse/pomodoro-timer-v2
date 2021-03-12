@@ -40,7 +40,7 @@ body {
   border-bottom: 1px solid black;
 }
 .app .nav .title-burger-container {
-  height: 4rem;
+  height: 3.5rem;
   width: 100%;
   padding: 0 1rem;
   display: flex;
@@ -266,7 +266,7 @@ body {
   background-color: white;
   border-top: 1px solid black;
   overflow: visible;
-  height: calc(100% - 4rem);
+  height: calc(100% - 3.5rem);
 }
 .footer .info-btn-container {
   width: 100%;
