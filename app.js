@@ -48,6 +48,7 @@ const form = document.querySelector('.form');
 const focusInput = document.querySelector('.focus-input');
 const breakInput = document.querySelector('.break-input');
 const restInput = document.querySelector('.rest-input');
+const saveIndicator = document.querySelector('.save-indicator');
 const saveBtn = document.querySelector('.save-btn');
 const defaultBtn = document.querySelector('.default-btn');
 
@@ -196,6 +197,14 @@ const handleMuteBtn = () => {
   }
 
   templeBell.volume = soundVol;
+};
+
+const indicateSaved = () => {
+  saveIndicator.classList.add('show');
+
+  setTimeout(() => {
+    saveIndicator.classList.remove('show');
+  }, 3000);
 };
 
 const updateSaveBtn = (f, b, r) => {
@@ -350,6 +359,7 @@ saveBtn.addEventListener('click', (e) => {
   ) {
     console.log('VALID');
     e.preventDefault();
+    indicateSaved();
     setUserSettings(focusInput.value, breakInput.value, restInput.value);
     saveToLocalStorage();
   } else {
