@@ -362,6 +362,10 @@ saveBtn.addEventListener('click', (e) => {
     indicateSaved();
     setUserSettings(focusInput.value, breakInput.value, restInput.value);
     saveToLocalStorage();
+
+    setTimeout(() => {
+      saveBtn.disabled = true;
+    }, 500);
   } else {
     console.log('INVALID');
   }
