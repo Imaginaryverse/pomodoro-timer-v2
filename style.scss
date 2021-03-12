@@ -378,9 +378,9 @@ body {
         transform: rotate(360deg);
       }
 
-      &:hover {
+      /* &:hover {
         color: mediumpurple;
-      }
+      } */
     }
   }
 
@@ -396,6 +396,14 @@ body {
     align-items: flex-start;
 
     font-size: 2.15vh;
+
+    opacity: 0;
+
+    transition: all 0.5s ease;
+
+    &.open {
+      opacity: 1;
+    }
 
     .info-list {
       margin: 0.5rem 0;
