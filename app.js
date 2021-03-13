@@ -258,13 +258,15 @@ const formatTime = (t) => {
   const mins = Math.floor(t / 60) - hrs * 60;
   const sec = t % 60;
 
-  /* TODO
-  IF NO HRS DO NOT DISPLAY 0
-  IF NO MINS DO NOT DISPLAY 0
-  IF NO SEC DO NOT DISPLAY 0
-  */
+  function addZero(n) {
+    return String(n).padStart(2, '0');
+  }
 
-  return `${hrs}:${mins}:${sec}`;
+  const hrsFormatted = addZero(hrs);
+  const minsFormatted = addZero(mins);
+  const secFormatted = addZero(sec);
+
+  return `${hrsFormatted}:${minsFormatted}:${secFormatted}`;
 };
 
 const startTimer = (t) => {
