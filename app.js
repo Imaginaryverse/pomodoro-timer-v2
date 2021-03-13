@@ -283,6 +283,7 @@ const startTimer = (t) => {
     time--;
 
     if (!time) {
+      templeBell.muted = false;
       templeBell.play();
       clearInterval(interval);
 
