@@ -67,6 +67,13 @@ const infoBtn = document.querySelector('.info-btn');
 const infoContainer = document.querySelector('.info-container');
 
 /* FUNCTIONS */
+const isSafariOnIOSDevice = () => {
+  const ua = window.navigator.userAgent;
+  const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
+  const webkit = !!ua.match(/WebKit/i);
+  return iOS && webkit && !ua.match(/CriOS/i);
+};
+
 const setSetting = (m) => {
   setting = m;
 };
@@ -398,6 +405,8 @@ document.addEventListener('click', (e) => {
 });
 
 /* START */
+muteBtn.style.display = isSafariOnIOSDevice() ? 'none' : 'visible';
+
 updateResetBtn(state);
 updateModeText('PRESS START');
 setBackground(state);
