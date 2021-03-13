@@ -23,9 +23,9 @@ const states = {
 };
 
 const userSettings = {
-  focusTime: 0,
-  breakTime: 0,
-  restTime: 0,
+  focusTime: DEF_FOCUS_VAL,
+  breakTime: DEF_BREAK_VAL,
+  restTime: DEF_REST_VAL,
 };
 
 let setting = settings.DEFAULT;
@@ -156,23 +156,23 @@ const handleInfoBtn = () => {
 
 const handleStart = () => {
   switch (state) {
-    case 'START':
+    case states.START:
       resetAll();
-      setState('PAUSE');
+      setState(states.PAUSE);
       timer.classList.remove('paused');
-      setMode('FOCUS');
+      setMode(modes.FOCUS);
       updateStartBtn(state);
       updateResetBtn(state);
-      startTimer(setting === 'USER' ? userSettings.focusTime : DEF_FOCUS_VAL);
+      startTimer(userSettings.focusTime);
       break;
-    case 'PAUSE':
-      setState('RESUME');
+    case states.PAUSE:
+      setState(states.RESUME);
       timer.classList.add('paused');
       updateStartBtn(state);
       updateResetBtn(state);
       break;
-    case 'RESUME':
-      setState('PAUSE');
+    case states.RESUME:
+      setState(states.PAUSE);
       timer.classList.remove('paused');
       updateStartBtn(state);
       updateResetBtn(state);
@@ -327,7 +327,7 @@ const startTimer = (t) => {
     }
 
     timer.innerHTML = formatTime(time);
-  }, 1000);
+  }, 10);
 };
 
 const resetAll = () => {
