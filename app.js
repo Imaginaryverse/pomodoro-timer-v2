@@ -333,7 +333,7 @@ const startTimer = (t) => {
     }
 
     timer.innerHTML = formatTime(time);
-  }, 10);
+  }, 1000);
 };
 
 const resetAll = () => {
